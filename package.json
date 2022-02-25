@@ -1,0 +1,35 @@
+{
+  "name": "rescript-ava",
+  "version": "0.1.0",
+  "description": "ReScript bindings for Ava",
+  "keywords": [
+    "ReScript",
+    "ava",
+    "test"
+  ],
+  "homepage": "https://github.com/DZakh-packages/rescript-ava#readme",
+  "bugs": {
+    "url": "https://github.com/DZakh-packages/rescript-ava/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DZakh-packages/rescript-ava.git"
+  },
+  "license": "MIT",
+  "author": "Dmitry Zakharov <dzakh.dev@gmail.com>",
+  "files": [
+    "src/",
+    "bsconfig.json"
+  ],
+  "scripts": {
+    "res:build": "rescript",
+    "res:dev": "rescript build -w"
+  },
+  "dependencies": {
+    "@ryyppy/rescript-promise": "2.1.0",
+    "ava": "4.0.1"
+  },
+  "devDependencies": {
+    "rescript": "^9.1.4"
+  }
+}
