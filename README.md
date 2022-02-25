@@ -1,3 +1,5 @@
+> Use https://github.com/resinfo/rescript-ava instead
+
 # rescript-ava
 
 [ReScript](https://github.com/rescript-lang) bindings for [Ava](https://github.com/avajs/ava)
