@@ -154,7 +154,7 @@ module Assert = {
     ~message: string=?,
     unit,
   ) => Promise.t<unit> = "notThrowsAsync"
-  @send external fail: (ExecutionContext.t<'context>, string) => unit = "fail"
+  @send external fail: (ExecutionContext.t<'context>, string) => 'any = "fail"
   @send external pass: (ExecutionContext.t<'context>, ~message: string=?, unit) => unit = "pass"
   @send
   external like: (
@@ -257,7 +257,7 @@ module Assert = {
       ~message: string=?,
       unit,
     ) => Promise.t<unit> = "skip"
-    @send @scope("fail") external fail: (ExecutionContext.t<'context>, string) => unit = "skip"
+    @send @scope("fail") external fail: (ExecutionContext.t<'context>, string) => 'any = "skip"
     @send @scope("pass")
     external pass: (ExecutionContext.t<'context>, ~message: string=?, unit) => unit = "skip"
     @send @scope("like")
