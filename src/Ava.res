@@ -1,3 +1,28 @@
+module ThrowsException = {
+  type t
+
+  let make = (
+    ~message: option<string>=?,
+    ~messageRe: option<Js.Re.t>=?,
+    ~name: option<string>=?,
+    ~is: option<Js.Exn.t>=?,
+    ~code: option<'code>=?,
+    ~instanceOf: option<'instanceOf>=?,
+    (),
+  ): t => {
+    %raw(`function(message, messageRe, name, is, code, instanceOf) {
+      var result = {},
+        messageParam = message || messageRe;
+      if (messageParam) result.message = messageParam;
+      if (name) result.name = name;
+      if (is) result.is = is;
+      if (code) result.code = code;
+      if (instanceOf) result.instanceOf = instanceOf;
+      return result;
+    }`)(message, messageRe, name, is, code, instanceOf)
+  }
+}
+
 module ExecutionContext = {
   type t<'context> = {
     mutable context: 'context,
@@ -106,7 +131,7 @@ module Assert = {
   external throws: (
     ExecutionContext.t<'context>,
     unit => unit,
-    ~expectations: 'todo=?,
+    ~expectations: ThrowsException.t=?,
     ~message: string=?,
     unit,
   ) => unit = "throws"
@@ -114,7 +139,7 @@ module Assert = {
   external throwsAsync: (
     ExecutionContext.t<'context>,
     Promise.t<unit>,
-    ~expectations: 'todo=?,
+    ~expectations: ThrowsException.t=?,
     ~message: string=?,
     unit,
   ) => Promise.t<unit> = "throwsAsync"
@@ -204,7 +229,7 @@ module Assert = {
     external throws: (
       ExecutionContext.t<'context>,
       unit => unit,
-      ~expectations: 'todo=?,
+      ~expectations: ThrowsException.t=?,
       ~message: string=?,
       unit,
     ) => unit = "skip"
@@ -212,7 +237,7 @@ module Assert = {
     external throwsAsync: (
       ExecutionContext.t<'context>,
       Promise.t<unit>,
-      ~expectations: 'todo=?,
+      ~expectations: ThrowsException.t=?,
       ~message: string=?,
       unit,
     ) => Promise.t<unit> = "skip"
