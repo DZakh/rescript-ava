@@ -112,10 +112,25 @@ module Assert = {
   external is: (ExecutionContext.t<'context>, 'value, 'value, ~message: string=?, unit) => unit =
     "is"
   @send
+  external unsafeIs: (
+    ExecutionContext.t<'context>,
+    'value1,
+    'value2,
+    ~message: string=?,
+    unit,
+  ) => unit = "is"
+  @send
   external deepEqual: (
     ExecutionContext.t<'context>,
     'value,
     'value,
+    ~message: string=?,
+    unit,
+  ) => unit = "deepEqual"
+  external unsafeDeepEqual: (
+    ExecutionContext.t<'context>,
+    'value1,
+    'value2,
     ~message: string=?,
     unit,
   ) => unit = "deepEqual"
@@ -204,11 +219,27 @@ module Assert = {
     @send @scope("is")
     external is: (ExecutionContext.t<'context>, 'value, 'value, ~message: string=?, unit) => unit =
       "skip"
+    @send @scope("is")
+    external unsafeIs: (
+      ExecutionContext.t<'context>,
+      'value1,
+      'value2,
+      ~message: string=?,
+      unit,
+    ) => unit = "skip"
     @send @scope("deepEqual")
     external deepEqual: (
       ExecutionContext.t<'context>,
       'value,
       'value,
+      ~message: string=?,
+      unit,
+    ) => unit = "skip"
+    @send @scope("deepEqual")
+    external unsafeDeepEqual: (
+      ExecutionContext.t<'context>,
+      'value1,
+      'value2,
       ~message: string=?,
       unit,
     ) => unit = "skip"
