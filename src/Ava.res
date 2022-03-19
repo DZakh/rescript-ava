@@ -109,13 +109,13 @@ module Always = {
 
 module Assert = {
   @send
-  external is: (ExecutionContext.t<'context>, 'value1, 'value2, ~message: string=?, unit) => unit =
+  external is: (ExecutionContext.t<'context>, 'value, 'value, ~message: string=?, unit) => unit =
     "is"
   @send
   external deepEqual: (
     ExecutionContext.t<'context>,
-    'value1,
-    'value2,
+    'value,
+    'value,
     ~message: string=?,
     unit,
   ) => unit = "deepEqual"
@@ -202,18 +202,13 @@ module Assert = {
 
   module Skip = {
     @send @scope("is")
-    external is: (
-      ExecutionContext.t<'context>,
-      'value1,
-      'value2,
-      ~message: string=?,
-      unit,
-    ) => unit = "skip"
+    external is: (ExecutionContext.t<'context>, 'value, 'value, ~message: string=?, unit) => unit =
+      "skip"
     @send @scope("deepEqual")
     external deepEqual: (
       ExecutionContext.t<'context>,
-      'value1,
-      'value2,
+      'value,
+      'value,
       ~message: string=?,
       unit,
     ) => unit = "skip"
