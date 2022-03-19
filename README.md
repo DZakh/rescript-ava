@@ -18,7 +18,7 @@ npm install --save-dev rescript-ava
 ```
 or 
 ```
-yarn install --save-dev rescript-ava
+yarn add --dev rescript-ava
 ```
 
 Then add `rescript-ava` to `bs-dev-dependencies` in your `bsconfig.json`:
