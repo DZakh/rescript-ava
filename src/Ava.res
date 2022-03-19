@@ -127,6 +127,7 @@ module Assert = {
     ~message: string=?,
     unit,
   ) => unit = "deepEqual"
+  @send
   external unsafeDeepEqual: (
     ExecutionContext.t<'context>,
     'value1,
