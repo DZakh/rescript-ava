@@ -7,13 +7,13 @@
     "ava",
     "test"
   ],
-  "homepage": "https://github.com/DZakh-packages/rescript-ava#readme",
+  "homepage": "https://github.com/DZakh/rescript-ava#readme",
   "bugs": {
-    "url": "https://github.com/DZakh-packages/rescript-ava/issues"
+    "url": "https://github.com/DZakh/rescript-ava/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DZakh-packages/rescript-ava.git"
+    "url": "git+https://github.com/DZakh/rescript-ava.git"
   },
   "license": "MIT",
   "author": "Dmitry Zakharov <dzakh.dev@gmail.com>",
