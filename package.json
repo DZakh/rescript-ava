@@ -22,8 +22,8 @@
     "bsconfig.json"
   ],
   "scripts": {
-    "res:build": "rescript",
-    "res:dev": "rescript build -w"
+    "res:build": "rescript build -with-deps",
+    "res:dev": "rescript build -with-deps -w"
   },
   "dependencies": {
     "@ryyppy/rescript-promise": "2.1.0",
