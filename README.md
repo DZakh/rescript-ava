@@ -1,4 +1,4 @@
-> Use https://github.com/resinfo/rescript-ava instead
+> Note: If you want to use package published on npm go here: https://github.com/resinfo/rescript-ava
 
 # rescript-ava
 
@@ -7,18 +7,14 @@
 ## Status
 
 - rescript-ava depends on ReScript 9.1.4, Ava 4.0.1 and @ryyppy/rescript-promise 2.1.0
-- rescript-ava has bindings for ~90% original functionality. If you find some bindings you need are missing, contributions are welcome
+- rescript-ava has bindings for ~95% original functionality. If you find some bindings you need are missing, contributions are welcome
 
 ## Usage
 
 ### Installation
 
 ```sh
-npm install --save-dev rescript-ava
-```
-or 
-```
-yarn add --dev rescript-ava
+npm install --save-dev DZakh/rescript-ava#latest-commit-hash
 ```
 
 Then add `rescript-ava` to `bs-dev-dependencies` in your `bsconfig.json`:
@@ -107,12 +103,13 @@ For the moment, please refer to [Ava.res](./src/Ava.res).
 
 ## Examples
 
-Open source projects using `rescript-ava`:
+Open source projects using **rescript-ava**:
 
-- rescript-json-schema **WIP**
+- [ReScript Struct](https://github.com/DZakh/rescript-struct) - A simple and composable way to describe relationship between JavaScript and ReScript structures
+- [ReScript JSON Schema](https://github.com/DZakh/rescript-json-schema) - Typesafe JSON schema for ReScript
 
 ## Changes
 
 ### 0.1.0
 
-- Created and published
+- Created and published (unsuccessfully)
