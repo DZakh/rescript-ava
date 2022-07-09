@@ -1,5 +1,3 @@
-> Note: If you want to use package published on npm go here: https://github.com/resinfo/rescript-ava
-
 # rescript-ava
 
 [ReScript](https://github.com/rescript-lang) bindings for [Ava](https://github.com/avajs/ava)
@@ -14,7 +12,7 @@
 ### Installation
 
 ```sh
-npm install --save-dev DZakh/rescript-ava#latest-commit-hash
+npm install --save-dev @dzakh/rescript-ava
 ```
 
 Then add `rescript-ava` to `bs-dev-dependencies` in your `bsconfig.json`:
