@@ -1,5 +1,5 @@
 {
-  "name": "rescript-ava",
+  "name": "@dzakh/rescript-ava",
   "namespace": false,
   "bsc-flags": ["-bs-no-version-header", "-bs-super-errors"],
   "suffix": ".bs.js",

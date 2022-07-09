@@ -1,6 +1,6 @@
 {
   "name": "@dzakh/rescript-ava",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "ReScript bindings for Ava",
   "keywords": [
     "ReScript",

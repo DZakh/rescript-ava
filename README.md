@@ -15,12 +15,12 @@
 npm install --save-dev @dzakh/rescript-ava
 ```
 
-Then add `rescript-ava` to `bs-dev-dependencies` in your `bsconfig.json`:
+Then add `@dzakh/rescript-ava` to `bs-dev-dependencies` in your `bsconfig.json`:
 
 ```diff
 {
   ...
-+ "bs-dev-dependencies": ["rescript-ava"]
++ "bs-dev-dependencies": ["@dzakh/rescript-ava"]
 }
 ```
 
@@ -47,7 +47,7 @@ Then add `test` script and minimalistic configuration in your `package.json`:
 +   "test": "ava"
   },
   "devDependencies": {
-    "rescript-ava": "^1.0.0"
+    "@dzakh/rescript-ava": "1.0.0"
   },
 + "ava": {
 +   "files": [
