@@ -6,7 +6,7 @@
 
 ## Status
 
-- rescript-ava depends on ReScript 9.1.4, Ava 4.0.1 and @ryyppy/rescript-promise 2.1.0
+- rescript-ava depends on ReScript 9.1.4, Ava 4.0.1
 - rescript-ava has bindings for ~95% original functionality. If you find some bindings you need are missing, contributions are welcome
 
 ## Usage

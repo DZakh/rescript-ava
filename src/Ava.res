@@ -54,7 +54,7 @@ external todo: string => unit = "todo"
 
 @module("ava") external test: (string, ExecutionContext.t<'context> => unit) => unit = "default"
 @module("ava")
-external asyncTest: (string, ExecutionContext.t<'context> => Promise.t<unit>) => unit = "default"
+external asyncTest: (string, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "default"
 @module("ava") external failing: (string, ExecutionContext.t<'context> => unit) => unit = "failing"
 
 @module("ava")
@@ -70,7 +70,7 @@ module Only = {
   @module("ava")
   external test: (string, ExecutionContext.t<'context> => unit) => unit = "only"
   @module("ava")
-  external asyncTest: (string, ExecutionContext.t<'context> => Promise.t<unit>) => unit = "only"
+  external asyncTest: (string, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "only"
   @module("ava") @scope("failing")
   external failing: (string, ExecutionContext.t<'context> => unit) => unit = "only"
 }
@@ -79,7 +79,7 @@ module Skip = {
   @module("ava")
   external test: (string, ExecutionContext.t<'context> => unit) => unit = "skip"
   @module("ava")
-  external asyncTest: (string, ExecutionContext.t<'context> => Promise.t<unit>) => unit = "skip"
+  external asyncTest: (string, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "skip"
   @module("ava") @scope("failing")
   external failing: (string, ExecutionContext.t<'context> => unit) => unit = "skip"
 
@@ -154,11 +154,11 @@ module Assert = {
   @send
   external throwsAsync: (
     ExecutionContext.t<'context>,
-    Promise.t<unit>,
+    Js.Promise.t<unit>,
     ~expectations: ThrowsException.t=?,
     ~message: string=?,
     unit,
-  ) => Promise.t<unit> = "throwsAsync"
+  ) => Js.Promise.t<unit> = "throwsAsync"
   @send
   external not: (ExecutionContext.t<'context>, 'value1, 'value2, ~message: string=?, unit) => unit =
     "not"
@@ -191,10 +191,10 @@ module Assert = {
   @send
   external notThrowsAsync: (
     ExecutionContext.t<'context>,
-    Promise.t<unit>,
+    Js.Promise.t<unit>,
     ~message: string=?,
     unit,
-  ) => Promise.t<unit> = "notThrowsAsync"
+  ) => Js.Promise.t<unit> = "notThrowsAsync"
   @send external fail: (ExecutionContext.t<'context>, string) => 'any = "fail"
   @send external pass: (ExecutionContext.t<'context>, ~message: string=?, unit) => unit = "pass"
   @send
@@ -263,11 +263,11 @@ module Assert = {
     @send @scope("throwsAsync")
     external throwsAsync: (
       ExecutionContext.t<'context>,
-      Promise.t<unit>,
+      Js.Promise.t<unit>,
       ~expectations: ThrowsException.t=?,
       ~message: string=?,
       unit,
-    ) => Promise.t<unit> = "skip"
+    ) => Js.Promise.t<unit> = "skip"
     @send @scope("not")
     external not: (
       ExecutionContext.t<'context>,
@@ -305,10 +305,10 @@ module Assert = {
     @send @scope("notThrowsAsync")
     external notThrowsAsync: (
       ExecutionContext.t<'context>,
-      Promise.t<unit>,
+      Js.Promise.t<unit>,
       ~message: string=?,
       unit,
-    ) => Promise.t<unit> = "skip"
+    ) => Js.Promise.t<unit> = "skip"
     @send @scope("fail") external fail: (ExecutionContext.t<'context>, string) => 'any = "skip"
     @send @scope("pass")
     external pass: (ExecutionContext.t<'context>, ~message: string=?, unit) => unit = "skip"
