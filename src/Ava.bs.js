@@ -1,17 +1,24 @@
 'use strict';
 
 
-function make(message, messageRe, name, is, code, instanceOf, param) {
-  return (function(message, messageRe, name, is, code, instanceOf) {
-      var result = {},
-        messageParam = message || messageRe;
-      if (messageParam) result.message = messageParam;
-      if (name) result.name = name;
-      if (is) result.is = is;
-      if (code) result.code = code;
-      if (instanceOf) result.instanceOf = instanceOf;
-      return result;
-    })(message, messageRe, name, is, code, instanceOf);
+function make(message, name, is, code, instanceOf, param) {
+  var result = {};
+  if (message !== undefined) {
+    ((result.message = message._0));
+  }
+  if (name !== undefined) {
+    ((result.name = name));
+  }
+  if (is !== undefined) {
+    ((result.is = is));
+  }
+  if (code !== undefined) {
+    ((result.code = code));
+  }
+  if (instanceOf !== undefined) {
+    ((result.instanceOf = instanceOf));
+  }
+  return result;
 }
 
 var ThrowsException = {

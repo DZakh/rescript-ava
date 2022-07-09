@@ -6,7 +6,7 @@
 
 ## Status
 
-- rescript-ava depends on ReScript 9.1.4, Ava 4.0.1
+- rescript-ava uses Ava 4.3.0
 - rescript-ava has bindings for ~95% original functionality. If you find some bindings you need are missing, contributions are welcome
 
 ## Usage
@@ -107,9 +107,3 @@ Open source projects using **rescript-ava**:
 
 - [ReScript Struct](https://github.com/DZakh/rescript-struct) - A simple and composable way to describe relationship between JavaScript and ReScript structures
 - [ReScript JSON Schema](https://github.com/DZakh/rescript-json-schema) - Typesafe JSON schema for ReScript
-
-## Changes
-
-### 0.1.0
-
-- Created and published (unsuccessfully)
