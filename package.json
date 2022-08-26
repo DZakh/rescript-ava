@@ -3,7 +3,7 @@
     "url": "https://github.com/DZakh/rescript-ava/issues"
   },
   "name": "@dzakh/rescript-ava",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "ReScript bindings for Ava",
   "license": "MIT",
   "repository": {
@@ -27,10 +27,10 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "rescript": "9.1.4"
+    "rescript": "10.0.0"
   },
   "peerDependencies": {
-    "rescript": "9.1.x",
+    "rescript": "10.0.x",
     "ava": "4.3.x"
   }
 }
