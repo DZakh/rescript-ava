@@ -65,16 +65,18 @@ Create a test file in the __tests__ directory and use the suffix `*_test.res`. W
 
 ```res
 // __tests__/Main_test.res
+open Ava
 
-Ava.test("foo", t => {
-  t->Ava.Assert.pass()
+ava->test("foo", t => {
+  t->Assert.pass()
 })
 
-Ava.asyncTest("bar", t => {
+ava->asyncTest("bar", t => {
   Promise.resolve("bar")->Promise.thenResolve(bar => {
-    t->Ava.Assert.is(bar, "bar", ())
+    t->Assert.is(bar, "bar", ())
   })
 })
+
 ```
 
 ### Running your tests

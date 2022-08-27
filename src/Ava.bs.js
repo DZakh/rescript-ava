@@ -1,4 +1,4 @@
-'use strict';
+
 
 
 function make(message, name, is, code, instanceOf, param) {
@@ -31,6 +31,16 @@ var ExecutionContext = {
   Skip: Skip
 };
 
+function test(ava, title, implementation) {
+  ava(title, implementation);
+}
+
+function asyncTest(ava, title, implementation) {
+  ava(title, implementation);
+}
+
+var Failing = {};
+
 var Only = {};
 
 var Skip$1 = {};
@@ -47,10 +57,15 @@ var Assert = {
   Skip: Skip$3
 };
 
-exports.ThrowsException = ThrowsException;
-exports.ExecutionContext = ExecutionContext;
-exports.Only = Only;
-exports.Skip = Skip$1;
-exports.Always = Always;
-exports.Assert = Assert;
+export {
+  ThrowsException ,
+  ExecutionContext ,
+  test ,
+  asyncTest ,
+  Failing ,
+  Only ,
+  Skip$1 as Skip,
+  Always ,
+  Assert ,
+}
 /* No side effect */

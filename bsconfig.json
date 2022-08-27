@@ -4,15 +4,12 @@
   "bsc-flags": ["-bs-no-version-header", "-bs-super-errors"],
   "suffix": ".bs.js",
   "package-specs": {
-    "module": "commonjs",
+    "module": "es6",
     "in-source": true
   },
   "sources": [
     {
       "dir": "src"
     }
-  ],
-  "warnings": {
-    "number": "-44"
-  }
+  ]
 }

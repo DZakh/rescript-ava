@@ -1,36 +1,36 @@
 {
-  "bugs": {
-    "url": "https://github.com/DZakh/rescript-ava/issues"
-  },
   "name": "@dzakh/rescript-ava",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "ReScript bindings for Ava",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DZakh/rescript-ava.git"
-  },
-  "homepage": "https://github.com/DZakh/rescript-ava#readme",
-  "author": "Dmitry Zakharov <dzakh.dev@gmail.com>",
-  "scripts": {
-    "res:build": "rescript build -with-deps",
-    "res:dev": "rescript build -with-deps -w"
-  },
-  "files": [
-    "src/",
-    "bsconfig.json"
-  ],
   "keywords": [
     "ReScript",
     "ava",
     "test"
   ],
-  "dependencies": {},
+  "homepage": "https://github.com/DZakh/rescript-ava#readme",
+  "bugs": {
+    "url": "https://github.com/DZakh/rescript-ava/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DZakh/rescript-ava.git"
+  },
+  "license": "MIT",
+  "author": "Dmitry Zakharov <dzakh.dev@gmail.com>",
+  "type": "module",
+  "files": [
+    "src/",
+    "bsconfig.json"
+  ],
+  "scripts": {
+    "res:build": "rescript build -with-deps",
+    "res:dev": "rescript build -with-deps -w"
+  },
   "devDependencies": {
     "rescript": "10.0.0"
   },
   "peerDependencies": {
-    "rescript": "10.0.x",
-    "ava": "4.3.x"
+    "ava": "4.3.x",
+    "rescript": "10.0.x"
   }
 }
