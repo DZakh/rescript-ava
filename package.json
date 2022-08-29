@@ -1,6 +1,6 @@
 {
   "name": "@dzakh/rescript-ava",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "ReScript bindings for Ava",
   "keywords": [
     "ReScript",
@@ -17,7 +17,6 @@
   },
   "license": "MIT",
   "author": "Dmitry Zakharov <dzakh.dev@gmail.com>",
-  "type": "module",
   "files": [
     "src/",
     "bsconfig.json"

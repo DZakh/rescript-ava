@@ -1,10 +1,9 @@
 {
   "name": "@dzakh/rescript-ava",
   "namespace": false,
-  "bsc-flags": ["-bs-no-version-header", "-bs-super-errors"],
   "suffix": ".bs.js",
   "package-specs": {
-    "module": "es6",
+    "module": "commonjs",
     "in-source": true
   },
   "sources": [
