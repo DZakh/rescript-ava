@@ -26,7 +26,7 @@
     "res:dev": "rescript build -with-deps -w"
   },
   "devDependencies": {
-    "rescript": "10.0.0"
+    "rescript": "10.0.1"
   },
   "peerDependencies": {
     "ava": "4.3.x",
