@@ -2,11 +2,6 @@
 
 [ReScript](https://github.com/rescript-lang) bindings for [Ava](https://github.com/avajs/ava)
 
-## Status
-
-- rescript-ava uses Ava 5.0.x
-- rescript-ava has bindings for ~95% original functionality. If you find some bindings you need are missing, contributions are welcome
-
 ## Usage
 
 ### Installation
