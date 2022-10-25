@@ -32,14 +32,6 @@ var ExecutionContext = {
   Skip: Skip
 };
 
-function test(ava, title, implementation) {
-  ava(title, implementation);
-}
-
-function asyncTest(ava, title, implementation) {
-  ava(title, implementation);
-}
-
 var Failing = {};
 
 var Only = {};
@@ -60,8 +52,6 @@ var Assert = {
 
 exports.ThrowsException = ThrowsException;
 exports.ExecutionContext = ExecutionContext;
-exports.test = test;
-exports.asyncTest = asyncTest;
 exports.Failing = Failing;
 exports.Only = Only;
 exports.Skip = Skip$1;

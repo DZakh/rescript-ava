@@ -1,7 +1,9 @@
 module ThrowsException = {
   type t
+  @live
   type message = String(string) | Re(Js.Re.t) | Fn((~message: string) => bool)
 
+  @live
   let make = (
     ~message: option<message>=?,
     ~name: option<string>=?,
@@ -31,6 +33,7 @@ module ThrowsException = {
 }
 
 module ExecutionContext = {
+  @live
   type t<'context> = {
     mutable context: 'context,
     title: string,
@@ -51,118 +54,105 @@ module ExecutionContext = {
   }
 }
 
+@live
 type meta = {
   file: string,
   snapshotDirectory: string,
 }
 
-type ava = {meta: meta}
+@module("ava") @scope("default") external meta: meta = "meta"
 
-@module("ava") external ava: ava = "default"
+@module("ava")
+external test: (string, ExecutionContext.t<'context> => unit) => unit = "default"
+@module("ava")
+external asyncTest: (string, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "default"
 
-let test = (ava: ava, title: string, implementation: ExecutionContext.t<'context> => unit): unit =>
-  (ava->Obj.magic)(. title, implementation)
-let asyncTest = (
-  ava: ava,
-  title: string,
-  implementation: ExecutionContext.t<'context> => Js.Promise.t<unit>,
-): unit => (ava->Obj.magic)(. title, implementation)
-
-@send
-external todo: (ava, string) => unit = "todo"
-@send
-external beforeEach: (ava, ExecutionContext.t<'context> => unit) => unit = "beforeEach"
-@send
-external asyncBeforeEach: (ava, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit =
+@module("ava") @scope("default")
+external todo: string => unit = "todo"
+@module("ava") @scope("default")
+external beforeEach: (ExecutionContext.t<'context> => unit) => unit = "beforeEach"
+@module("ava") @scope("default")
+external asyncBeforeEach: (ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit =
   "beforeEach"
-@send
-external before: (ava, ExecutionContext.t<'context> => unit) => unit = "before"
-@send
-external asyncBefore: (ava, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "before"
-@send
-external afterEach: (ava, ExecutionContext.t<'context> => unit) => unit = "afterEach"
-@send
-external asyncAfterEach: (ava, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit =
-  "afterEach"
-@send
-external after: (ava, ExecutionContext.t<'context> => unit) => unit = "after"
-@send
-external asyncAfter: (ava, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "after"
+@module("ava") @scope("default")
+external before: (ExecutionContext.t<'context> => unit) => unit = "before"
+@module("ava") @scope("default")
+external asyncBefore: (ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "before"
+@module("ava") @scope("default")
+external afterEach: (ExecutionContext.t<'context> => unit) => unit = "afterEach"
+@module("ava") @scope("default")
+external asyncAfterEach: (ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "afterEach"
+@module("ava") @scope("default")
+external after: (ExecutionContext.t<'context> => unit) => unit = "after"
+@module("ava") @scope("default")
+external asyncAfter: (ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "after"
 
 module Failing = {
-  @send
-  external test: (ava, string, ExecutionContext.t<'context> => unit) => unit = "failing"
-  @send
-  external asyncTest: (ava, string, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit =
+  @module("ava") @scope("default")
+  external test: (string, ExecutionContext.t<'context> => unit) => unit = "failing"
+  @module("ava") @scope("default")
+  external asyncTest: (string, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit =
     "failing"
-  @send @scope("failing")
-  external only: (ava, string, ExecutionContext.t<'context> => unit) => unit = "only"
-  @send @scope("failing")
-  external asyncOnly: (ava, string, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit =
-    "only"
-  @send @scope("failing")
-  external skip: (ava, string, ExecutionContext.t<'context> => unit) => unit = "skip"
-  @send @scope("failing")
-  external asyncSkip: (ava, string, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit =
-    "skip"
+  @module("ava") @scope(("default", "failing"))
+  external only: (string, ExecutionContext.t<'context> => unit) => unit = "only"
+  @module("ava") @scope(("default", "failing"))
+  external asyncOnly: (string, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "only"
+  @module("ava") @scope(("default", "failing"))
+  external skip: (string, ExecutionContext.t<'context> => unit) => unit = "skip"
+  @module("ava") @scope(("default", "failing"))
+  external asyncSkip: (string, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "skip"
 }
 
 module Only = {
-  @send
-  external test: (ava, string, ExecutionContext.t<'context> => unit) => unit = "only"
-  @send
-  external asyncTest: (ava, string, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit =
-    "only"
+  @module("ava") @scope("default")
+  external test: (string, ExecutionContext.t<'context> => unit) => unit = "only"
+  @module("ava") @scope("default")
+  external asyncTest: (string, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "only"
 }
 
 module Skip = {
-  @send
-  external test: (ava, string, ExecutionContext.t<'context> => unit) => unit = "skip"
-  @send
-  external asyncTest: (ava, string, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit =
-    "skip"
+  @module("ava") @scope("default")
+  external test: (string, ExecutionContext.t<'context> => unit) => unit = "skip"
+  @module("ava") @scope("default")
+  external asyncTest: (string, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "skip"
 
-  @send @scope("beforeEach")
-  external beforeEach: (ava, ExecutionContext.t<'context> => unit) => unit = "skip"
-  @send @scope("beforeEach")
-  external asyncBeforeEach: (ava, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit =
-    "skip"
-  @send @scope("before")
-  external before: (ava, ExecutionContext.t<'context> => unit) => unit = "skip"
-  @send @scope("before")
-  external asyncBefore: (ava, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "skip"
-  @send @scope("afterEach")
-  external afterEach: (ava, ExecutionContext.t<'context> => unit) => unit = "skip"
-  @send @scope("afterEach")
-  external asyncAfterEach: (ava, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit =
-    "skip"
-  @send @scope("after")
-  external after: (ava, ExecutionContext.t<'context> => unit) => unit = "skip"
-  @send @scope("after")
-  external asyncAfter: (ava, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "skip"
+  @module("ava") @scope(("default", "beforeEach"))
+  external beforeEach: (ExecutionContext.t<'context> => unit) => unit = "skip"
+  @module("ava") @scope(("default", "beforeEach"))
+  external asyncBeforeEach: (ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "skip"
+  @module("ava") @scope(("default", "before"))
+  external before: (ExecutionContext.t<'context> => unit) => unit = "skip"
+  @module("ava") @scope(("default", "before"))
+  external asyncBefore: (ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "skip"
+  @module("ava") @scope(("default", "afterEach"))
+  external afterEach: (ExecutionContext.t<'context> => unit) => unit = "skip"
+  @module("ava") @scope(("default", "afterEach"))
+  external asyncAfterEach: (ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "skip"
+  @module("ava") @scope(("default", "after"))
+  external after: (ExecutionContext.t<'context> => unit) => unit = "skip"
+  @module("ava") @scope(("default", "after"))
+  external asyncAfter: (ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "skip"
 }
 
 module Always = {
-  @send @scope("afterEach")
-  external afterEach: (ava, ExecutionContext.t<'context> => unit) => unit = "always"
-  @send @scope("afterEach")
-  external asyncAfterEach: (ava, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit =
-    "always"
-  @send @scope("after")
-  external after: (ava, ExecutionContext.t<'context> => unit) => unit = "always"
-  @send @scope("after")
-  external asyncAfter: (ava, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "always"
+  @module("ava") @scope(("default", "afterEach"))
+  external afterEach: (ExecutionContext.t<'context> => unit) => unit = "always"
+  @module("ava") @scope(("default", "afterEach"))
+  external asyncAfterEach: (ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "always"
+  @module("ava") @scope(("default", "after"))
+  external after: (ExecutionContext.t<'context> => unit) => unit = "always"
+  @module("ava") @scope(("default", "after"))
+  external asyncAfter: (ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "always"
 
   module Skip = {
-    @send @scope(("afterEach", "always"))
-    external afterEach: (ava, ExecutionContext.t<'context> => unit) => unit = "skip"
-    @send @scope(("afterEach", "always"))
-    external asyncAfterEach: (ava, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit =
-      "skip"
-    @send @scope(("after", "always"))
-    external after: (ava, ExecutionContext.t<'context> => unit) => unit = "skip"
-    @send @scope(("after", "always"))
-    external asyncAfter: (ava, ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "skip"
+    @module("ava") @scope(("default", "afterEach", "always"))
+    external afterEach: (ExecutionContext.t<'context> => unit) => unit = "skip"
+    @module("ava") @scope(("default", "afterEach", "always"))
+    external asyncAfterEach: (ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "skip"
+    @module("ava") @scope(("default", "after", "always"))
+    external after: (ExecutionContext.t<'context> => unit) => unit = "skip"
+    @module("ava") @scope(("default", "after", "always"))
+    external asyncAfter: (ExecutionContext.t<'context> => Js.Promise.t<unit>) => unit = "skip"
   }
 }
 

@@ -60,18 +60,17 @@ Then add `test` script and minimalistic configuration in your `package.json`:
 
 ### Create your test file
 
-Create a test file in the __tests__ directory and use the suffix `*_test.res`. When compiled they will be put in a __tests__ directory with a `*_test.bs.js` suffix, ready to be picked up when you run ava. If you're not already familiar with [Ava](https://github.com/avajs/ava), see [the Ava documentation](https://github.com/avajs/ava#documentation).
-
+Create a test file in the **tests** directory and use the suffix `*_test.res`. When compiled they will be put in a **tests** directory with a `*_test.bs.js` suffix, ready to be picked up when you run ava. If you're not already familiar with [Ava](https://github.com/avajs/ava), see [the Ava documentation](https://github.com/avajs/ava#documentation).
 
 ```res
 // __tests__/Main_test.res
 open Ava
 
-ava->test("foo", t => {
+test("foo", t => {
   t->Assert.pass()
 })
 
-ava->asyncTest("bar", t => {
+asyncTest("bar", t => {
   Promise.resolve("bar")->Promise.thenResolve(bar => {
     t->Assert.is(bar, "bar", ())
   })
