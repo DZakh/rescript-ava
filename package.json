@@ -5,7 +5,10 @@
   "keywords": [
     "ReScript",
     "ava",
-    "test"
+    "test",
+    "unit tests",
+    "nodejs",
+    "jest"
   ],
   "homepage": "https://github.com/DZakh/rescript-ava#readme",
   "bugs": {
