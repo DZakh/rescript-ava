@@ -30,7 +30,7 @@
     "rescript": "10.0.1"
   },
   "peerDependencies": {
-    "ava": "4.3.x",
+    "ava": "5.0.x",
     "rescript": "10.0.x"
   }
 }

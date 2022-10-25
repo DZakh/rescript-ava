@@ -4,7 +4,7 @@
 
 ## Status
 
-- rescript-ava uses Ava 4.3.x
+- rescript-ava uses Ava 5.0.x
 - rescript-ava has bindings for ~95% original functionality. If you find some bindings you need are missing, contributions are welcome
 
 ## Usage
@@ -12,7 +12,7 @@
 ### Installation
 
 ```sh
-npm install --save-dev @dzakh/rescript-ava ava@4.3.x
+npm install -D @dzakh/rescript-ava ava@5.0.x
 ```
 
 Then add `@dzakh/rescript-ava` to `bs-dev-dependencies` in your `bsconfig.json`:
