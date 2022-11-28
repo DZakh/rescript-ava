@@ -4,7 +4,7 @@
 
 var Message = {};
 
-var ThrowsException = {
+var ThrowsExpectation = {
   Message: Message
 };
 
@@ -32,7 +32,7 @@ var Assert = {
   Skip: Skip$3
 };
 
-exports.ThrowsException = ThrowsException;
+exports.ThrowsExpectation = ThrowsExpectation;
 exports.ExecutionContext = ExecutionContext;
 exports.Failing = Failing;
 exports.Only = Only;

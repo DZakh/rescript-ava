@@ -1,15 +1,13 @@
-module ThrowsException = {
+module ThrowsExpectation = {
   module Message = {
-    type t
-
-    external string: string => t = "%identity"
+    type t = string
 
     external re: Js.Re.t => t = "%identity"
 
-    external fn: Js.Re.t => t = "%identity"
+    external fn: (~message: string) => t = "%identity"
   }
 
-  type code
+  type code = int
   type instanceOf
 
   type t = {
@@ -186,7 +184,7 @@ module Assert = {
   external throws: (
     ExecutionContext.t<'context>,
     unit => unit,
-    ~expectations: ThrowsException.t=?,
+    ~expectations: ThrowsExpectation.t=?,
     ~message: string=?,
     unit,
   ) => unit = "throws"
@@ -194,7 +192,7 @@ module Assert = {
   external throwsAsync: (
     ExecutionContext.t<'context>,
     promise<unit>,
-    ~expectations: ThrowsException.t=?,
+    ~expectations: ThrowsExpectation.t=?,
     ~message: string=?,
     unit,
   ) => promise<unit> = "throwsAsync"
@@ -302,7 +300,7 @@ module Assert = {
     external throws: (
       ExecutionContext.t<'context>,
       unit => unit,
-      ~expectations: ThrowsException.t=?,
+      ~expectations: ThrowsExpectation.t=?,
       ~message: string=?,
       unit,
     ) => unit = "skip"
@@ -310,7 +308,7 @@ module Assert = {
     external throwsAsync: (
       ExecutionContext.t<'context>,
       promise<unit>,
-      ~expectations: ThrowsException.t=?,
+      ~expectations: ThrowsExpectation.t=?,
       ~message: string=?,
       unit,
     ) => promise<unit> = "skip"
