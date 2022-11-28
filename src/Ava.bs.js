@@ -2,28 +2,10 @@
 'use strict';
 
 
-function make(message, name, is, code, instanceOf, param) {
-  var result = {};
-  if (message !== undefined) {
-    ((result.message = message._0));
-  }
-  if (name !== undefined) {
-    ((result.name = name));
-  }
-  if (is !== undefined) {
-    ((result.is = is));
-  }
-  if (code !== undefined) {
-    ((result.code = code));
-  }
-  if (instanceOf !== undefined) {
-    ((result.instanceOf = instanceOf));
-  }
-  return result;
-}
+var Message = {};
 
 var ThrowsException = {
-  make: make
+  Message: Message
 };
 
 var Skip = {};
