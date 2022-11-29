@@ -183,7 +183,7 @@ module Assert = {
   @send
   external throws: (
     ExecutionContext.t<'context>,
-    unit => unit,
+    unit => 'a,
     ~expectations: ThrowsExpectation.t=?,
     ~message: string=?,
     unit,
@@ -191,7 +191,7 @@ module Assert = {
   @send
   external throwsAsync: (
     ExecutionContext.t<'context>,
-    promise<unit>,
+    promise<'a>,
     ~expectations: ThrowsExpectation.t=?,
     ~message: string=?,
     unit,
@@ -224,16 +224,12 @@ module Assert = {
   external snapshot: (ExecutionContext.t<'context>, 'expected, ~message: string=?, unit) => unit =
     "snapshot"
   @send
-  external notThrows: (
-    ExecutionContext.t<'context>,
-    unit => unit,
-    ~message: string=?,
-    unit,
-  ) => unit = "notThrows"
+  external notThrows: (ExecutionContext.t<'context>, unit => 'a, ~message: string=?, unit) => unit =
+    "notThrows"
   @send
   external notThrowsAsync: (
     ExecutionContext.t<'context>,
-    promise<unit>,
+    promise<'a>,
     ~message: string=?,
     unit,
   ) => promise<unit> = "notThrowsAsync"
@@ -299,7 +295,7 @@ module Assert = {
     @send @scope("throws")
     external throws: (
       ExecutionContext.t<'context>,
-      unit => unit,
+      unit => 'a,
       ~expectations: ThrowsExpectation.t=?,
       ~message: string=?,
       unit,
@@ -307,7 +303,7 @@ module Assert = {
     @send @scope("throwsAsync")
     external throwsAsync: (
       ExecutionContext.t<'context>,
-      promise<unit>,
+      promise<'a>,
       ~expectations: ThrowsExpectation.t=?,
       ~message: string=?,
       unit,
@@ -342,14 +338,14 @@ module Assert = {
     @send @scope("notRegex")
     external notThrows: (
       ExecutionContext.t<'context>,
-      unit => unit,
+      unit => 'a,
       ~message: string=?,
       unit,
     ) => unit = "skip"
     @send @scope("notThrowsAsync")
     external notThrowsAsync: (
       ExecutionContext.t<'context>,
-      promise<unit>,
+      promise<'a>,
       ~message: string=?,
       unit,
     ) => promise<unit> = "skip"
