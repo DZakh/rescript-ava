@@ -6,9 +6,8 @@
     "module": "commonjs",
     "in-source": true
   },
-  "sources": [
-    {
-      "dir": "src"
-    }
-  ]
+  "sources": {
+    "dir": "src"
+  },
+  "uncurried": true
 }
