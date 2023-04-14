@@ -30,10 +30,10 @@
     "res:dev": "rescript build -with-deps -w"
   },
   "devDependencies": {
-    "rescript": "11.0.0-alpha.2"
+    "rescript": "11.0.0-alpha.3"
   },
   "peerDependencies": {
     "ava": "5.2.x",
-    "rescript": "11.0.0-alpha.2"
+    "rescript": "11.0.0-alpha.3"
   }
 }
