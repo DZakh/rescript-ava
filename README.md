@@ -7,7 +7,7 @@ Runtime free [ReScript](https://github.com/rescript-lang) bindings for [Ava](htt
 ### Installation
 
 ```sh
-npm install -D @dzakh/rescript-ava ava@5.1.x
+npm install -D @dzakh/rescript-ava ava@5.2.x
 ```
 
 Then add `@dzakh/rescript-ava` to `bs-dev-dependencies` in your `bsconfig.json`:
