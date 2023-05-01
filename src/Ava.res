@@ -4,7 +4,7 @@ module ThrowsExpectation = {
 
     external re: Js.Re.t => t = "%identity"
 
-    external fn: (~message: string) => t = "%identity"
+    external fn: (~message: string => bool) => t = "%identity"
   }
 
   type code = int
