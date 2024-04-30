@@ -10,7 +10,7 @@ Runtime free [ReScript](https://github.com/rescript-lang) bindings for [Ava](htt
 npm install -D @dzakh/rescript-ava ava@5.2.x
 ```
 
-Then add `@dzakh/rescript-ava` to `bs-dev-dependencies` in your `bsconfig.json`:
+Then add `@dzakh/rescript-ava` to `bs-dev-dependencies` in your `rescript.json`:
 
 ```diff
 {
@@ -42,7 +42,7 @@ Then add `test` script and minimalistic configuration in your `package.json`:
 +   "test": "ava"
   },
   "devDependencies": {
-    "@dzakh/rescript-ava": "1.0.0"
+    "@dzakh/rescript-ava": "latest"
   },
 + "ava": {
 +   "files": [
@@ -99,6 +99,6 @@ For the moment, please refer to [Ava.res](./src/Ava.res).
 
 Open source projects using **rescript-ava**:
 
-- [rescript-struct](https://github.com/DZakh/rescript-struct) - A simple and composable way to describe relationship between JavaScript and ReScript structures
+- [rescript-schema](https://github.com/DZakh/rescript-schema) - The fastest composable parser/serializer for ReScript (and TypeScript)
 - [rescript-envsafe](https://github.com/DZakh/rescript-envsafe) - Makes sure you don't accidentally deploy apps with missing or invalid environment variables
 - [rescript-json-schema](https://github.com/DZakh/rescript-json-schema) - Typesafe JSON schema for ReScript

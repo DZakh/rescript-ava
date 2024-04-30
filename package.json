@@ -23,17 +23,17 @@
   "files": [
     "src/**/*.res",
     "src/**/*.resi",
-    "bsconfig.json"
+    "rescript.json"
   ],
   "scripts": {
-    "res:build": "rescript build -with-deps",
-    "res:dev": "rescript build -with-deps -w"
+    "res:build": "rescript",
+    "res": "rescript -w"
   },
   "devDependencies": {
-    "rescript": "11.0.0-alpha.5"
+    "rescript": "11.1.0"
   },
   "peerDependencies": {
     "ava": "5.2.x",
-    "rescript": "10.1.x || ~11.0.0-alpha"
+    "rescript": "11.x"
   }
 }

@@ -8,6 +8,5 @@
   },
   "sources": {
     "dir": "src"
-  },
-  "uncurried": true
+  }
 }
