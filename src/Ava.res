@@ -7,15 +7,12 @@ module ThrowsExpectation = {
     external fn: (~message: string => bool) => t = "%identity"
   }
 
-  type code = int
-  type instanceOf
-
   type t = {
     message?: Message.t,
     name?: string,
     is?: Js.Exn.t,
-    code?: code,
-    instanceOf?: instanceOf,
+    code?: int,
+    instanceOf?: 'instanceOf. 'instanceOf,
   }
 }
 
@@ -30,14 +27,14 @@ module ExecutionContext = {
   @send external plan: (t<'context>, int) => unit = "plan"
   @send
   external teardown: (t<'context>, unit => promise<unit>) => promise<unit> = "teardown"
-  @send external timeout: (t<'context>, float, ~message: string=?, unit) => unit = "timeout"
+  @send external timeout: (t<'context>, float, ~message: string=?) => unit = "timeout"
 
   module Skip = {
     @send @scope("plan") external plan: (t<'context>, int) => unit = "skip"
     @send @scope("teardown")
     external teardown: (t<'context>, unit => promise<unit>) => promise<unit> = "skip"
     @send @scope("timeout")
-    external timeout: (t<'context>, float, ~message: string=?, unit) => unit = "skip"
+    external timeout: (t<'context>, float, ~message: string=?) => unit = "skip"
   }
 }
 
@@ -146,47 +143,33 @@ module Always = {
 
 module Assert = {
   @send
-  external is: (ExecutionContext.t<'context>, 'actual, 'actual, ~message: string=?, unit) => unit =
-    "is"
+  external is: (ExecutionContext.t<'context>, 'actual, 'actual, ~message: string=?) => unit = "is"
   @send
   external unsafeIs: (
     ExecutionContext.t<'context>,
     'actual,
     'expected,
     ~message: string=?,
-    unit,
   ) => unit = "is"
   @send
-  external deepEqual: (
-    ExecutionContext.t<'context>,
-    'actual,
-    'actual,
-    ~message: string=?,
-    unit,
-  ) => unit = "deepEqual"
+  external deepEqual: (ExecutionContext.t<'context>, 'actual, 'actual, ~message: string=?) => unit =
+    "deepEqual"
   @send
   external unsafeDeepEqual: (
     ExecutionContext.t<'context>,
     'actual,
     'expected,
     ~message: string=?,
-    unit,
   ) => unit = "deepEqual"
   @send
-  external regex: (
-    ExecutionContext.t<'context>,
-    string,
-    Js.Re.t,
-    ~message: string=?,
-    unit,
-  ) => unit = "regex"
+  external regex: (ExecutionContext.t<'context>, string, Js.Re.t, ~message: string=?) => unit =
+    "regex"
   @send
   external throws: (
     ExecutionContext.t<'context>,
     unit => 'a,
     ~expectations: ThrowsExpectation.t=?,
     ~message: string=?,
-    unit,
   ) => unit = "throws"
   @send
   external throwsAsync: (
@@ -194,111 +177,75 @@ module Assert = {
     promise<'a>,
     ~expectations: ThrowsExpectation.t=?,
     ~message: string=?,
-    unit,
   ) => promise<unit> = "throwsAsync"
   @send
-  external not: (
-    ExecutionContext.t<'context>,
-    'actual,
-    'expected,
-    ~message: string=?,
-    unit,
-  ) => unit = "not"
+  external not: (ExecutionContext.t<'context>, 'actual, 'expected, ~message: string=?) => unit =
+    "not"
   @send
   external notDeepEqual: (
     ExecutionContext.t<'context>,
     'actual,
     'expected,
     ~message: string=?,
-    unit,
   ) => unit = "notDeepEqual"
   @send
-  external notRegex: (
-    ExecutionContext.t<'context>,
-    string,
-    Js.Re.t,
-    ~message: string=?,
-    unit,
-  ) => unit = "notRegex"
+  external notRegex: (ExecutionContext.t<'context>, string, Js.Re.t, ~message: string=?) => unit =
+    "notRegex"
   @send
-  external snapshot: (ExecutionContext.t<'context>, 'expected, ~message: string=?, unit) => unit =
+  external snapshot: (ExecutionContext.t<'context>, 'expected, ~message: string=?) => unit =
     "snapshot"
   @send
-  external notThrows: (ExecutionContext.t<'context>, unit => 'a, ~message: string=?, unit) => unit =
+  external notThrows: (ExecutionContext.t<'context>, unit => 'a, ~message: string=?) => unit =
     "notThrows"
   @send
   external notThrowsAsync: (
     ExecutionContext.t<'context>,
     promise<'a>,
     ~message: string=?,
-    unit,
   ) => promise<unit> = "notThrowsAsync"
   @send external fail: (ExecutionContext.t<'context>, string) => 'any = "fail"
-  @send external pass: (ExecutionContext.t<'context>, ~message: string=?, unit) => unit = "pass"
+  @send external pass: (ExecutionContext.t<'context>, ~message: string=?) => unit = "pass"
   @send
-  external like: (
-    ExecutionContext.t<'context>,
-    'actual,
-    'selector,
-    ~message: string=?,
-    unit,
-  ) => unit = "like"
+  external like: (ExecutionContext.t<'context>, 'actual, 'selector, ~message: string=?) => unit =
+    "like"
   @send
-  external falsy: (ExecutionContext.t<'context>, 'actual, ~message: string=?, unit) => unit =
-    "falsy"
+  external falsy: (ExecutionContext.t<'context>, 'actual, ~message: string=?) => unit = "falsy"
   @send
-  external truthy: (ExecutionContext.t<'context>, 'actual, ~message: string=?, unit) => unit =
-    "truthy"
+  external truthy: (ExecutionContext.t<'context>, 'actual, ~message: string=?) => unit = "truthy"
   @send
-  external isFalse: (ExecutionContext.t<'context>, 'actual, ~message: string=?, unit) => unit =
-    "false"
+  external isFalse: (ExecutionContext.t<'context>, 'actual, ~message: string=?) => unit = "false"
   @send
-  external isTrue: (ExecutionContext.t<'context>, 'actual, ~message: string=?, unit) => unit =
-    "true"
+  external isTrue: (ExecutionContext.t<'context>, 'actual, ~message: string=?) => unit = "true"
 
   module Skip = {
     @send @scope("is")
-    external is: (ExecutionContext.t<'context>, 'value, 'value, ~message: string=?, unit) => unit =
-      "skip"
+    external is: (ExecutionContext.t<'context>, 'value, 'value, ~message: string=?) => unit = "skip"
     @send @scope("is")
     external unsafeIs: (
       ExecutionContext.t<'context>,
       'actual,
       'expected,
       ~message: string=?,
-      unit,
     ) => unit = "skip"
     @send @scope("deepEqual")
-    external deepEqual: (
-      ExecutionContext.t<'context>,
-      'value,
-      'value,
-      ~message: string=?,
-      unit,
-    ) => unit = "skip"
+    external deepEqual: (ExecutionContext.t<'context>, 'value, 'value, ~message: string=?) => unit =
+      "skip"
     @send @scope("deepEqual")
     external unsafeDeepEqual: (
       ExecutionContext.t<'context>,
       'actual,
       'expected,
       ~message: string=?,
-      unit,
     ) => unit = "skip"
     @send @scope("regex")
-    external regex: (
-      ExecutionContext.t<'context>,
-      string,
-      Js.Re.t,
-      ~message: string=?,
-      unit,
-    ) => unit = "skip"
+    external regex: (ExecutionContext.t<'context>, string, Js.Re.t, ~message: string=?) => unit =
+      "skip"
     @send @scope("throws")
     external throws: (
       ExecutionContext.t<'context>,
       unit => 'a,
       ~expectations: ThrowsExpectation.t=?,
       ~message: string=?,
-      unit,
     ) => unit = "skip"
     @send @scope("throwsAsync")
     external throwsAsync: (
@@ -306,71 +253,45 @@ module Assert = {
       promise<'a>,
       ~expectations: ThrowsExpectation.t=?,
       ~message: string=?,
-      unit,
     ) => promise<unit> = "skip"
     @send @scope("not")
-    external not: (
-      ExecutionContext.t<'context>,
-      'actual,
-      'expected,
-      ~message: string=?,
-      unit,
-    ) => unit = "skip"
+    external not: (ExecutionContext.t<'context>, 'actual, 'expected, ~message: string=?) => unit =
+      "skip"
     @send @scope("notDeepEqual")
     external notDeepEqual: (
       ExecutionContext.t<'context>,
       'actual,
       'expected,
       ~message: string=?,
-      unit,
     ) => unit = "skip"
     @send @scope("notRegex")
-    external notRegex: (
-      ExecutionContext.t<'context>,
-      string,
-      Js.Re.t,
-      ~message: string=?,
-      unit,
-    ) => unit = "skip"
+    external notRegex: (ExecutionContext.t<'context>, string, Js.Re.t, ~message: string=?) => unit =
+      "skip"
     @send @scope("snapshot")
-    external snapshot: (ExecutionContext.t<'context>, 'expected, ~message: string=?, unit) => unit =
+    external snapshot: (ExecutionContext.t<'context>, 'expected, ~message: string=?) => unit =
       "skip"
     @send @scope("notRegex")
-    external notThrows: (
-      ExecutionContext.t<'context>,
-      unit => 'a,
-      ~message: string=?,
-      unit,
-    ) => unit = "skip"
+    external notThrows: (ExecutionContext.t<'context>, unit => 'a, ~message: string=?) => unit =
+      "skip"
     @send @scope("notThrowsAsync")
     external notThrowsAsync: (
       ExecutionContext.t<'context>,
       promise<'a>,
       ~message: string=?,
-      unit,
     ) => promise<unit> = "skip"
     @send @scope("fail") external fail: (ExecutionContext.t<'context>, string) => 'any = "skip"
     @send @scope("pass")
-    external pass: (ExecutionContext.t<'context>, ~message: string=?, unit) => unit = "skip"
+    external pass: (ExecutionContext.t<'context>, ~message: string=?) => unit = "skip"
     @send @scope("like")
-    external like: (
-      ExecutionContext.t<'context>,
-      'actual,
-      'selector,
-      ~message: string=?,
-      unit,
-    ) => unit = "skip"
+    external like: (ExecutionContext.t<'context>, 'actual, 'selector, ~message: string=?) => unit =
+      "skip"
     @send @scope("falsy")
-    external falsy: (ExecutionContext.t<'context>, 'actual, ~message: string=?, unit) => unit =
-      "skip"
+    external falsy: (ExecutionContext.t<'context>, 'actual, ~message: string=?) => unit = "skip"
     @send @scope("truthy")
-    external truthy: (ExecutionContext.t<'context>, 'actual, ~message: string=?, unit) => unit =
-      "skip"
+    external truthy: (ExecutionContext.t<'context>, 'actual, ~message: string=?) => unit = "skip"
     @send @scope("false")
-    external isFalse: (ExecutionContext.t<'context>, 'actual, ~message: string=?, unit) => unit =
-      "skip"
+    external isFalse: (ExecutionContext.t<'context>, 'actual, ~message: string=?) => unit = "skip"
     @send @scope("true")
-    external isTrue: (ExecutionContext.t<'context>, 'actual, ~message: string=?, unit) => unit =
-      "skip"
+    external isTrue: (ExecutionContext.t<'context>, 'actual, ~message: string=?) => unit = "skip"
   }
 }
