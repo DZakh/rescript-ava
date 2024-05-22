@@ -19,7 +19,7 @@ Then add `@dzakh/rescript-ava` to `bs-dev-dependencies` in your `rescript.json`:
 }
 ```
 
-Then add `__tests__` to `sources` in your `bsconfig.json`:
+Then add `__tests__` to `sources` in your `rescript.json`:
 
 ```diff
 "sources": [
@@ -62,12 +62,12 @@ Create a test file in the **tests** directory and use the suffix `*_test.res`. W
 open Ava
 
 test("foo", t => {
-  t->Assert.pass()
+  t->Assert.pass
 })
 
 asyncTest("bar", t => {
   Promise.resolve("bar")->Promise.thenResolve(bar => {
-    t->Assert.is(bar, "bar", ())
+    t->Assert.is(bar, "bar")
   })
 })
 
