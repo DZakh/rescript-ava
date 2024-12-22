@@ -7,7 +7,7 @@ Runtime free [ReScript](https://github.com/rescript-lang) bindings for [Ava](htt
 ### Installation
 
 ```sh
-npm install -D @dzakh/rescript-ava ava@5.2.x
+npm install -D @dzakh/rescript-ava ava
 ```
 
 Then add `@dzakh/rescript-ava` to `bs-dev-dependencies` in your `rescript.json`:
@@ -99,6 +99,7 @@ For the moment, please refer to [Ava.res](./src/Ava.res).
 
 Open source projects using **rescript-ava**:
 
-- [rescript-schema](https://github.com/DZakh/rescript-schema) - The fastest composable parser/serializer for ReScript (and TypeScript)
+- [rescript-schema](https://github.com/DZakh/rescript-schema) - The fastest parser in the entire JavaScript ecosystem with a focus on small bundle size and top-notch DX
+- [rescript-rest](https://github.com/DZakh/rescript-rest) - RPC-like client, contract, and server implementation for a pure REST API
 - [rescript-envsafe](https://github.com/DZakh/rescript-envsafe) - Makes sure you don't accidentally deploy apps with missing or invalid environment variables
 - [rescript-json-schema](https://github.com/DZakh/rescript-json-schema) - Typesafe JSON schema for ReScript

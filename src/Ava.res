@@ -13,6 +13,7 @@ module ThrowsExpectation = {
     is?: Js.Exn.t,
     code?: int,
     instanceOf?: 'instanceOf. 'instanceOf,
+    any?: bool,
   }
 }
 
@@ -26,7 +27,7 @@ module ExecutionContext = {
 
   @send external plan: (t<'context>, int) => unit = "plan"
   @send
-  external teardown: (t<'context>, unit => promise<unit>) => promise<unit> = "teardown"
+  external teardown: (t<'context>, unit => promise<unit>) => unit = "teardown"
   @send external timeout: (t<'context>, float, ~message: string=?) => unit = "timeout"
 
   module Skip = {

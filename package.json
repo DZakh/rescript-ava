@@ -1,6 +1,6 @@
 {
   "name": "@dzakh/rescript-ava",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Runtime free ReScript bindings for Ava",
   "keywords": [
     "ReScript",
@@ -30,10 +30,10 @@
     "res": "rescript -w"
   },
   "devDependencies": {
-    "rescript": "11.1.0"
+    "rescript": "11.1.4"
   },
   "peerDependencies": {
-    "ava": "5.2.x",
+    "ava": "^5.2.0 || 6",
     "rescript": "11.x"
   }
 }
