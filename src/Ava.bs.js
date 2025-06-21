@@ -2,33 +2,33 @@
 'use strict';
 
 
-var Message = {};
+let Message = {};
 
-var ThrowsExpectation = {
+let ThrowsExpectation = {
   Message: Message
 };
 
-var Skip = {};
+let Skip = {};
 
-var ExecutionContext = {
+let ExecutionContext = {
   Skip: Skip
 };
 
-var Failing = {};
+let Failing = {};
 
-var Only = {};
+let Only = {};
 
-var Skip$1 = {};
+let Skip$1 = {};
 
-var Skip$2 = {};
+let Skip$2 = {};
 
-var Always = {
+let Always = {
   Skip: Skip$2
 };
 
-var Skip$3 = {};
+let Skip$3 = {};
 
-var Assert = {
+let Assert = {
   Skip: Skip$3
 };
 

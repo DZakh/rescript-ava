@@ -2,7 +2,7 @@ module ThrowsExpectation = {
   module Message = {
     type t = string
 
-    external re: Js.Re.t => t = "%identity"
+    external re: RegExp.t => t = "%identity"
 
     external fn: (~message: string => bool) => t = "%identity"
   }
@@ -10,7 +10,7 @@ module ThrowsExpectation = {
   type t = {
     message?: Message.t,
     name?: string,
-    is?: Js.Exn.t,
+    is?: JsExn.t,
     code?: int,
     instanceOf?: 'instanceOf. 'instanceOf,
     any?: bool,
@@ -163,7 +163,7 @@ module Assert = {
     ~message: string=?,
   ) => unit = "deepEqual"
   @send
-  external regex: (ExecutionContext.t<'context>, string, Js.Re.t, ~message: string=?) => unit =
+  external regex: (ExecutionContext.t<'context>, string, RegExp.t, ~message: string=?) => unit =
     "regex"
   @send
   external throws: (
@@ -190,7 +190,7 @@ module Assert = {
     ~message: string=?,
   ) => unit = "notDeepEqual"
   @send
-  external notRegex: (ExecutionContext.t<'context>, string, Js.Re.t, ~message: string=?) => unit =
+  external notRegex: (ExecutionContext.t<'context>, string, RegExp.t, ~message: string=?) => unit =
     "notRegex"
   @send
   external snapshot: (ExecutionContext.t<'context>, 'expected, ~message: string=?) => unit =
@@ -239,7 +239,7 @@ module Assert = {
       ~message: string=?,
     ) => unit = "skip"
     @send @scope("regex")
-    external regex: (ExecutionContext.t<'context>, string, Js.Re.t, ~message: string=?) => unit =
+    external regex: (ExecutionContext.t<'context>, string, RegExp.t, ~message: string=?) => unit =
       "skip"
     @send @scope("throws")
     external throws: (
@@ -266,7 +266,7 @@ module Assert = {
       ~message: string=?,
     ) => unit = "skip"
     @send @scope("notRegex")
-    external notRegex: (ExecutionContext.t<'context>, string, Js.Re.t, ~message: string=?) => unit =
+    external notRegex: (ExecutionContext.t<'context>, string, RegExp.t, ~message: string=?) => unit =
       "skip"
     @send @scope("snapshot")
     external snapshot: (ExecutionContext.t<'context>, 'expected, ~message: string=?) => unit =
